@@ -985,6 +985,11 @@ async function confirmPin() {
   showToast('Dati eliminati');
 }
 
+// ── Service Worker (offline) ──────────────────────────────
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+
 // ── Init ─────────────────────────────────────────────────
 (async () => {
   try {
