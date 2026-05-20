@@ -2,8 +2,9 @@
   v1 — 2026-05-15: first launch SIME Roma
   v2 — 2026-05-20: multilingual, laser, manager notes, contact priority
   v3 — 2026-05-20: order tab, products.js, IVA, mailto send
+  v4 — 2026-05-20: CONFIG block, laser multi-select, global discount, darker toggle
 */
-const CACHE = 'melicor-v3';
+const CACHE = 'melicor-v4';
 const ASSETS = ['./', './index.html', './products.js', './icon.png'];
 
 self.addEventListener('install', e => {
