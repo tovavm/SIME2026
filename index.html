@@ -70,7 +70,7 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 .contact-fields .field-group:last-child { margin-bottom:0; }
 .prio-toggle { display:flex; flex-direction:column; width:38px; flex-shrink:0; border:1.5px solid var(--beige-dark); border-radius:10px; overflow:hidden; }
 .prio-btn { flex:1; border:none; background:var(--white); cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; transition:background .15s; padding:0; line-height:1; }
-.prio-btn.active { background:rgba(136,186,185,0.3); }
+.prio-btn.active { background:var(--teal-dark); color:var(--white); }
 .prio-sep { height:1px; background:var(--beige-dark); flex-shrink:0; }
 .contact-error { display:none; font-size:11px; color:var(--error); margin-top:6px; font-weight:500; }
 .contact-group.error .contact-error { display:block; }
@@ -149,11 +149,11 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 .qty-btn { width:32px; height:32px; border:1.5px solid var(--beige-dark); border-radius:8px; background:var(--white); font-size:18px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--teal-dark); font-weight:500; }
 .qty-btn:active { background:var(--teal-light); }
 .qty-display { width:32px; text-align:center; font-size:16px; font-weight:500; flex-shrink:0; }
-.disc-wrap { display:flex; align-items:center; gap:4px; margin-left:auto; }
-.disc-wrap input { width:48px; padding:6px 6px; font-size:14px; text-align:center; }
-.disc-wrap span { font-size:12px; color:var(--text-muted); }
 .line-total { font-size:14px; font-weight:500; color:var(--teal-dark); min-width:56px; text-align:right; white-space:nowrap; }
 .product-row.has-qty { background:rgba(136,186,185,0.06); border-radius:8px; margin:0 -4px; padding:10px 4px; }
+.global-disc-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.global-disc-row label { margin:0; white-space:nowrap; }
+.global-disc-row input { width:72px; padding:8px 10px; font-size:15px; text-align:center; flex-shrink:0; }
 
 .order-summary { border-top:2px solid var(--beige-dark); margin-top:4px; padding-top:14px; }
 .summary-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:14px; }
@@ -190,8 +190,8 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
       <path class="st0" d="M227.6,67.5c4.7,0,8.5-3.8,8.5-8.5s-3.8-8.5-8.5-8.5-8.5,3.8-8.5,8.5,3.8,8.5,8.5,8.5"/>
     </svg>
   </div>
-  <div class="event-info">SIME Congress · Roma · 15–17 Maggio 2026</div>
-  <div class="stand-badge">Stand C54</div>
+  <div class="event-info" id="eventInfo">SIME Congress · Roma · 15–17 Maggio 2026</div>
+  <div class="stand-badge" id="standBadge">Stand C54</div>
 </div>
 
 <div class="backup-bar">
@@ -282,11 +282,23 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 
     <div class="divider"></div>
     <div class="section-title" data-i18n="sectionLaser">Laser</div>
-    <div class="check-grid" style="margin-bottom:14px">
-      <label class="check-item"><input type="radio" name="laser" value="Nessun laser" checked><span data-i18n="laserNo">Nessun laser</span></label>
-      <label class="check-item"><input type="radio" name="laser" value="Epilazione"><span data-i18n="laserEpil">Epilazione</span></label>
-      <label class="check-item"><input type="radio" name="laser" value="Anti-età"><span data-i18n="laserAntiAge">Anti-età</span></label>
-      <label class="check-item"><input type="radio" name="laser" value="Tatuaggi"><span data-i18n="laserTattoo">Tatuaggi</span></label>
+    <div class="check-grid" style="margin-bottom:14px" id="laserGrid">
+      <label class="check-item" style="grid-column:1/-1">
+        <input type="checkbox" id="laserNo" onchange="onLaserNoChange(this)">
+        <span data-i18n="laserNo">Nessun laser</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="laser-opt" value="Epilazione" onchange="onLaserOptChange()">
+        <span data-i18n="laserEpil">Epilazione</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" class="laser-opt" value="Anti-età" onchange="onLaserOptChange()">
+        <span data-i18n="laserAntiAge">Anti-età</span>
+      </label>
+      <label class="check-item" style="grid-column:1/-1">
+        <input type="checkbox" class="laser-opt" value="Tatuaggi" onchange="onLaserOptChange()">
+        <span data-i18n="laserTattoo">Tatuaggi</span>
+      </label>
     </div>
 
     <div class="divider"></div>
@@ -353,6 +365,12 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 
   <div class="form-card">
     <div class="order-summary">
+      <div class="global-disc-row">
+        <label data-i18n="discount" style="font-size:11px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted)">Sconto globale</label>
+        <input type="number" id="globalDisc" value="0" min="0" max="100"
+               oninput="recalcOrder()" onchange="recalcOrder()">
+        <span style="font-size:14px;color:var(--text-muted)">%</span>
+      </div>
       <div class="summary-row">
         <span data-i18n="subtotal">Subtotale</span>
         <span id="orderSubtotal">€ 0,00</span>
@@ -406,6 +424,14 @@ select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 
 <script src="products.js"></script>
 <script>
+// ── CONFIG — edit before each congress ───────────────────
+const CONFIG = {
+  eventName:  'SIME Congress',
+  eventCity:  'Roma',
+  eventDates: '15–17 Maggio 2026',
+  standNumber: 'C54',
+};
+
 // ── Translations ─────────────────────────────────────────
 const T = {
   IT: {
@@ -579,6 +605,38 @@ function setLang(code) {
   document.querySelectorAll('.manager-note-input').forEach(el => el.placeholder = T[code].managerNotePlaceholder);
 }
 
+// ── Laser checkbox logic ─────────────────────────────────
+function onLaserNoChange(cb) {
+  if (cb.checked) {
+    document.querySelectorAll('.laser-opt').forEach(el => {
+      el.checked = false; el.disabled = true;
+      el.closest('.check-item').style.opacity = '.4';
+    });
+  } else {
+    document.querySelectorAll('.laser-opt').forEach(el => {
+      el.disabled = false;
+      el.closest('.check-item').style.opacity = '';
+    });
+  }
+}
+function onLaserOptChange() {
+  const anyChecked = [...document.querySelectorAll('.laser-opt')].some(el => el.checked);
+  const noEl = document.getElementById('laserNo');
+  if (anyChecked && noEl.checked) { noEl.checked = false; }
+}
+function getLaserValue() {
+  if (document.getElementById('laserNo').checked) return 'Nessun laser';
+  const vals = [...document.querySelectorAll('.laser-opt:checked')].map(el => el.value);
+  return vals.join('; ') || '';
+}
+function resetLaser() {
+  document.getElementById('laserNo').checked = false;
+  document.querySelectorAll('.laser-opt').forEach(el => {
+    el.checked = false; el.disabled = false;
+    el.closest('.check-item').style.opacity = '';
+  });
+}
+
 // ── Contact priority ─────────────────────────────────────
 let contactPriority = 'email';
 function setPriority(p) {
@@ -689,7 +747,7 @@ async function saveEntry() {
     ruolo:            document.getElementById('ruolo').value,
     telefono:         tel, email: email.toLowerCase(),
     contact_priority: contactPriority,
-    laser:            document.querySelector('input[name=laser]:checked')?.value || '',
+    laser:            getLaserValue(),
     interessi:        [...document.querySelectorAll('input[name=interesse]:checked')].map(c=>c.value).join('; '),
     note:             document.getElementById('note').value.trim(),
     language:         T[curLang].lang,
@@ -701,7 +759,7 @@ async function saveEntry() {
     ['nome','cognome','clinica','citta','telefono','email','note'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('ruolo').value='';
     document.querySelectorAll('input[name=interesse]').forEach(c=>c.checked=false);
-    document.querySelector('input[name=laser][value="Nessun laser"]').checked=true;
+    resetLaser();
     document.querySelectorAll('.error').forEach(e=>e.classList.remove('error'));
     document.getElementById('contactGroup').classList.remove('error');
     contactPriority='email';
@@ -808,7 +866,7 @@ async function confirmPin() {
 }
 
 // ── Order tab ────────────────────────────────────────────
-let orderQtys = {}, orderDiscs = {};
+let orderQtys = {};
 let pendingClientId = null;
 
 async function initOrderTab() {
@@ -849,13 +907,7 @@ function renderProductList() {
         <button class="qty-btn" onclick="qtyChange('${p.sku}',-1)" type="button">−</button>
         <span class="qty-display" id="qty-${p.sku}">0</span>
         <button class="qty-btn" onclick="qtyChange('${p.sku}',1)" type="button">+</button>
-        <div class="disc-wrap">
-          <input type="number" id="disc-${p.sku}" value="0" min="0" max="100"
-                 style="width:48px;padding:6px;font-size:13px;text-align:center"
-                 onchange="recalcOrder()" oninput="recalcOrder()">
-          <span>%</span>
-        </div>
-        <span class="line-total" id="line-${p.sku}">—</span>
+        <span class="line-total" id="line-${p.sku}" style="margin-left:auto">—</span>
       </div>
     </div>
   `).join('');
@@ -870,12 +922,11 @@ function qtyChange(sku, delta) {
 }
 
 function recalcOrder() {
+  const globalDisc = Number(document.getElementById('globalDisc')?.value || 0);
   let subtotal = 0;
   PRODUCTS.forEach(p => {
     const qty  = orderQtys[p.sku] || 0;
-    const disc = Number(document.getElementById('disc-'+p.sku)?.value || 0);
-    orderDiscs[p.sku] = disc;
-    const line = qty > 0 ? p.price * qty * (1 - disc/100) : 0;
+    const line = qty > 0 ? p.price * qty * (1 - globalDisc/100) : 0;
     const el = document.getElementById('line-'+p.sku);
     if (el) el.textContent = qty > 0 ? `€ ${fmt(line)}` : '—';
     subtotal += line;
@@ -892,12 +943,13 @@ async function saveOrder() {
   const clientId = Number(document.getElementById('orderClient').value);
   if (!clientId) { showToast(t().noClientErr,'warn'); return; }
 
+  const globalDisc = Number(document.getElementById('globalDisc').value || 0);
   const items = PRODUCTS
     .filter(p => (orderQtys[p.sku]||0) > 0)
     .map(p => ({
       sku: p.sku, name: p.name, price: p.price,
-      qty: orderQtys[p.sku], discount: orderDiscs[p.sku]||0,
-      line_total: p.price * orderQtys[p.sku] * (1-(orderDiscs[p.sku]||0)/100)
+      qty: orderQtys[p.sku], discount: globalDisc,
+      line_total: p.price * orderQtys[p.sku] * (1 - globalDisc/100)
     }));
 
   if (!items.length) { showToast(t().noItemsErr,'warn'); return; }
@@ -927,13 +979,13 @@ async function saveOrder() {
   }
 
   // Reset order form
-  orderQtys = {}; orderDiscs = {};
+  orderQtys = {};
   PRODUCTS.forEach(p => {
     const qEl=document.getElementById('qty-'+p.sku); if(qEl) qEl.textContent='0';
-    const dEl=document.getElementById('disc-'+p.sku); if(dEl) dEl.value='0';
     const lEl=document.getElementById('line-'+p.sku); if(lEl) lEl.textContent='—';
     const row=document.getElementById('prow-'+p.sku); if(row) row.classList.remove('has-qty');
   });
+  document.getElementById('globalDisc').value='0';
   document.getElementById('ivaCheck').checked=false;
   document.getElementById('sendCopyCheck').checked=false;
   document.getElementById('orderNote').value='';
@@ -983,6 +1035,10 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').ca
     setStatus('ok',`DB ✓  (${all.length})`);
     if (all.length) { const last=all.reduce((a,b)=>a.id>b.id?a:b); setLastSave(last.ts.slice(0,16)); }
   } catch(e) { setStatus('err','IndexedDB error'); }
+  // Apply CONFIG to header
+  document.getElementById('eventInfo').textContent =
+    `${CONFIG.eventName} · ${CONFIG.eventCity} · ${CONFIG.eventDates}`;
+  document.getElementById('standBadge').textContent = `Stand ${CONFIG.standNumber}`;
   setLang('IT');
   document.querySelectorAll('input[type=text],input[type=email],input[type=tel]').forEach(el=>
     el.addEventListener('input',()=>el.classList.remove('error'))
