@@ -13,212 +13,166 @@
 <meta name="theme-color" content="#5a9493">
 <style>
 :root {
-  --teal: #88bab9;
-  --teal-dark: #5a9493;
-  --teal-light: #b8d8d7;
-  --beige: #e9e2d7;
-  --beige-dark: #d4c9b8;
-  --gold: #f2b51b;
-  --text: #2c2c2c;
-  --text-muted: #7a7a7a;
-  --bg: #f5f2ed;
-  --white: #ffffff;
-  --error: #c0392b;
-  --success: #27ae60;
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --teal: #88bab9; --teal-dark: #5a9493; --teal-light: #b8d8d7;
+  --beige: #e9e2d7; --beige-dark: #d4c9b8;
+  --gold: #f2b51b; --text: #2c2c2c; --text-muted: #7a7a7a;
+  --bg: #f5f2ed; --white: #ffffff;
+  --error: #c0392b; --success: #27ae60;
+  --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 40px; }
 
 /* ── Header ── */
 .header { background: var(--teal-dark); color: var(--white); padding: 18px 20px 14px; text-align: center; position: relative; overflow: hidden; }
-.header::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.06); border-radius: 50%; }
-.header-logo { position: relative; height: 48px; display: flex; align-items: center; justify-content: center; }
-.header-logo svg { height: 48px; width: auto; }
-.event-info { margin-top: 6px; font-size: 12px; font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; position: relative; }
-.stand-badge { display: inline-block; margin-top: 8px; background: var(--gold); color: var(--text); font-size: 11px; font-weight: 500; padding: 3px 12px; border-radius: 20px; letter-spacing: 1px; position: relative; }
+.header::before { content:''; position:absolute; top:-30px; right:-30px; width:120px; height:120px; background:rgba(255,255,255,0.06); border-radius:50%; }
+.header-logo { position:relative; height:48px; display:flex; align-items:center; justify-content:center; }
+.header-logo svg { height:48px; width:auto; }
+.event-info { margin-top:6px; font-size:12px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; opacity:.85; }
+.stand-badge { display:inline-block; margin-top:8px; background:var(--gold); color:var(--text); font-size:11px; font-weight:500; padding:3px 12px; border-radius:20px; letter-spacing:1px; }
 
 /* ── Status bar ── */
-.backup-bar { background: rgba(0,0,0,0.25); padding: 5px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.75); letter-spacing: 0.3px; }
-.backup-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); display: inline-block; margin-right: 6px; flex-shrink: 0; }
-.backup-dot.warn { background: var(--gold); }
-.backup-dot.err  { background: var(--error); }
+.backup-bar { background:rgba(0,0,0,0.25); padding:5px 16px; display:flex; align-items:center; justify-content:space-between; font-size:11px; color:rgba(255,255,255,0.75); }
+.backup-dot { width:7px; height:7px; border-radius:50%; background:var(--success); display:inline-block; margin-right:6px; }
+.backup-dot.warn { background:var(--gold); } .backup-dot.err { background:var(--error); }
 
-/* ── Language selector ── */
-.lang-bar { display: flex; gap: 6px; padding: 12px 16px 0; }
-.lang-btn {
-  flex: 1; padding: 8px 4px;
-  background: var(--white);
-  border: 1.5px solid var(--beige-dark);
-  border-radius: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.15s;
-  letter-spacing: 0.5px;
-}
-.lang-btn.active { background: var(--teal-dark); border-color: var(--teal-dark); color: var(--white); }
+/* ── Language bar ── */
+.lang-bar { display:flex; gap:6px; padding:12px 16px 0; }
+.lang-btn { flex:1; padding:8px 4px; background:var(--white); border:1.5px solid var(--beige-dark); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; color:var(--text-muted); cursor:pointer; transition:all .15s; }
+.lang-btn.active { background:var(--teal-dark); border-color:var(--teal-dark); color:var(--white); }
 
 /* ── Tabs ── */
-.tabs { display: flex; background: var(--teal-dark); border-top: 1px solid rgba(255,255,255,0.1); }
-.tab { flex: 1; padding: 10px; text-align: center; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: rgba(255,255,255,0.6); cursor: pointer; border: none; background: none; transition: all 0.2s; position: relative; }
-.tab.active { color: var(--white); }
-.tab.active::after { content: ''; position: absolute; bottom: 0; left: 20%; right: 20%; height: 2px; background: var(--gold); border-radius: 2px 2px 0 0; }
-.tab-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+.tabs { display:flex; background:var(--teal-dark); border-top:1px solid rgba(255,255,255,0.1); }
+.tab { flex:1; padding:10px 6px; text-align:center; font-size:11px; font-weight:500; letter-spacing:.3px; color:rgba(255,255,255,0.6); cursor:pointer; border:none; background:none; transition:all .2s; position:relative; }
+.tab.active { color:var(--white); }
+.tab.active::after { content:''; position:absolute; bottom:0; left:20%; right:20%; height:2px; background:var(--gold); border-radius:2px 2px 0 0; }
+.tab-icon { font-size:15px; display:block; margin-bottom:2px; }
 
-.panel { display: none; padding: 16px; }
-.panel.active { display: block; }
+.panel { display:none; padding:16px; }
+.panel.active { display:block; }
 
-/* ── Form ── */
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--teal-dark); margin: 4px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--beige-dark); }
-.field-group { margin-bottom: 14px; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
-label .req { color: var(--error); margin-left: 2px; }
+/* ── Form elements ── */
+.section-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:500; color:var(--teal-dark); margin:4px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--beige-dark); }
+.field-group { margin-bottom:14px; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+label { display:block; font-size:11px; font-weight:500; letter-spacing:.8px; text-transform:uppercase; color:var(--text-muted); margin-bottom:5px; }
+label .req { color:var(--error); margin-left:2px; }
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea { width:100%; padding:11px 14px; font-family:'DM Sans',sans-serif; font-size:15px; border:1.5px solid var(--beige-dark); border-radius:8px; background:var(--white); color:var(--text); outline:none; transition:border-color .2s,box-shadow .2s; -webkit-appearance:none; }
+input:focus,select:focus,textarea:focus { border-color:var(--teal); box-shadow:0 0 0 3px rgba(136,186,185,0.2); }
+input.error,select.error { border-color:var(--error); }
+textarea { resize:none; height:72px; }
+select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7a7a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:36px; }
 
-input[type=text], input[type=email], input[type=tel], select, textarea {
-  width: 100%; padding: 11px 14px;
-  font-family: 'DM Sans', sans-serif; font-size: 15px;
-  border: 1.5px solid var(--beige-dark); border-radius: 8px;
-  background: var(--white); color: var(--text);
-  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-  -webkit-appearance: none;
-}
-input:focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(136,186,185,0.2); }
-input.error, select.error { border-color: var(--error); }
-textarea { resize: none; height: 72px; }
-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7a7a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+/* ── Contact wrap ── */
+.contact-wrap { display:flex; align-items:stretch; gap:8px; }
+.contact-fields { flex:1; min-width:0; }
+.contact-fields .field-group { margin-bottom:14px; }
+.contact-fields .field-group:last-child { margin-bottom:0; }
+.prio-toggle { display:flex; flex-direction:column; width:38px; flex-shrink:0; border:1.5px solid var(--beige-dark); border-radius:10px; overflow:hidden; }
+.prio-btn { flex:1; border:none; background:var(--white); cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; transition:background .15s; padding:0; line-height:1; }
+.prio-btn.active { background:rgba(136,186,185,0.3); }
+.prio-sep { height:1px; background:var(--beige-dark); flex-shrink:0; }
+.contact-error { display:none; font-size:11px; color:var(--error); margin-top:6px; font-weight:500; }
+.contact-group.error .contact-error { display:block; }
+.contact-group.error input { border-color:var(--error); }
 
-/* ── Contact wrap + priority toggle ── */
-.contact-wrap { display: flex; align-items: stretch; gap: 8px; }
-.contact-fields { flex: 1; min-width: 0; }
-.contact-fields .field-group { margin-bottom: 14px; }
-.contact-fields .field-group:last-child { margin-bottom: 0; }
-
-.prio-toggle {
-  display: flex; flex-direction: column;
-  width: 38px; flex-shrink: 0;
-  border: 1.5px solid var(--beige-dark);
-  border-radius: 10px; overflow: hidden;
-  align-self: stretch;
-  margin-bottom: 0;
-}
-.prio-btn {
-  flex: 1; border: none;
-  background: var(--white);
-  cursor: pointer; font-size: 15px;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s; padding: 0;
-  line-height: 1;
-}
-.prio-btn.active { background: rgba(136,186,185,0.3); }
-.prio-sep { height: 1px; background: var(--beige-dark); flex-shrink: 0; }
-
-.contact-error { display: none; font-size: 11px; color: var(--error); margin-top: 6px; font-weight: 500; }
-.contact-group.error .contact-error { display: block; }
-.contact-group.error input { border-color: var(--error); }
-
-/* ── Checkboxes / Radio items ── */
-.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.check-item {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--white); border: 1.5px solid var(--beige-dark);
-  border-radius: 8px; padding: 9px 10px;
-  cursor: pointer; transition: all 0.15s; font-size: 13px;
-}
-.check-item:has(input:checked) { border-color: var(--teal); background: rgba(136,186,185,0.1); }
-.check-item input[type=checkbox],
-.check-item input[type=radio] { width: 18px; height: 18px; accent-color: var(--teal-dark); cursor: pointer; flex-shrink: 0; }
+/* ── Checkboxes / Radio ── */
+.check-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.check-item { display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--beige-dark); border-radius:8px; padding:9px 10px; cursor:pointer; transition:all .15s; font-size:13px; }
+.check-item:has(input:checked) { border-color:var(--teal); background:rgba(136,186,185,0.1); }
+.check-item input[type=checkbox],.check-item input[type=radio] { width:18px; height:18px; accent-color:var(--teal-dark); cursor:pointer; flex-shrink:0; }
 
 /* ── Buttons ── */
-.btn-submit {
-  width: 100%; padding: 15px;
-  background: var(--teal-dark); color: var(--white);
-  border: none; border-radius: var(--radius);
-  font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.5px;
-  cursor: pointer; margin-top: 8px; transition: all 0.2s;
-}
-.btn-submit:active { transform: scale(0.98); background: var(--teal); }
-.btn-submit.success { background: var(--success); }
-
-.btn-row { display: flex; gap: 8px; margin-bottom: 14px; }
-.btn-export {
-  flex: 1; padding: 13px;
-  background: var(--gold); color: var(--text);
-  border: none; border-radius: var(--radius);
-  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
-  transition: opacity 0.2s;
-}
-.btn-export:active { opacity: 0.8; }
-.btn-export:disabled { opacity: 0.4; cursor: default; }
-.btn-share { padding: 13px 16px; background: var(--teal-light); color: var(--teal-dark); border: none; border-radius: var(--radius); font-size: 20px; cursor: pointer; transition: opacity 0.2s; }
-.btn-share:active { opacity: 0.7; }
-.btn-share:disabled { opacity: 0.3; cursor: default; }
-.btn-danger { width: 100%; padding: 11px; background: none; color: var(--error); border: 1.5px solid var(--error); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; margin-top: 10px; opacity: 0.6; transition: opacity 0.2s; }
-.btn-danger:active { opacity: 1; }
+.btn-submit { width:100%; padding:15px; background:var(--teal-dark); color:var(--white); border:none; border-radius:var(--radius); font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; cursor:pointer; margin-top:8px; transition:all .2s; }
+.btn-submit:active { transform:scale(.98); background:var(--teal); }
+.btn-submit.success { background:var(--success); }
+.btn-row { display:flex; gap:8px; margin-bottom:14px; }
+.btn-export { flex:1; padding:13px; background:var(--gold); color:var(--text); border:none; border-radius:var(--radius); font-family:'DM Sans',sans-serif; font-size:14px; font-weight:500; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; transition:opacity .2s; }
+.btn-export:active { opacity:.8; } .btn-export:disabled { opacity:.4; cursor:default; }
+.btn-share { padding:13px 16px; background:var(--teal-light); color:var(--teal-dark); border:none; border-radius:var(--radius); font-size:20px; cursor:pointer; }
+.btn-share:disabled { opacity:.3; cursor:default; }
+.btn-danger { width:100%; padding:11px; background:none; color:var(--error); border:1.5px solid var(--error); border-radius:var(--radius); font-family:'DM Sans',sans-serif; font-size:13px; cursor:pointer; margin-top:10px; opacity:.6; }
+.btn-danger:active { opacity:1; }
 
 /* ── Toast ── */
-.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--text); color: var(--white); padding: 11px 22px; border-radius: 24px; font-size: 14px; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 999; white-space: nowrap; box-shadow: var(--shadow); }
-.toast.show { transform: translateX(-50%) translateY(0); }
-.toast.success { background: var(--success); }
-.toast.warn    { background: #e67e22; }
+.toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--text); color:var(--white); padding:11px 22px; border-radius:24px; font-size:14px; font-weight:500; transition:transform .3s cubic-bezier(.34,1.56,.64,1); z-index:999; white-space:nowrap; box-shadow:var(--shadow); }
+.toast.show { transform:translateX(-50%) translateY(0); }
+.toast.success { background:var(--success); } .toast.warn { background:#e67e22; }
 
 /* ── Reminder ── */
-.reminder { display: none; background: rgba(242,181,27,0.15); border: 1px solid var(--gold); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #7a5a00; margin-bottom: 14px; align-items: center; gap: 8px; line-height: 1.5; }
-.reminder.show { display: flex; }
+.reminder { display:none; background:rgba(242,181,27,0.15); border:1px solid var(--gold); border-radius:8px; padding:10px 14px; font-size:12px; color:#7a5a00; margin-bottom:14px; align-items:center; gap:8px; }
+.reminder.show { display:flex; }
 
 /* ── Stats ── */
-.stats-row { display: flex; gap: 10px; margin-bottom: 16px; }
-.stat-card { flex: 1; background: var(--white); border-radius: var(--radius); padding: 12px; text-align: center; box-shadow: var(--shadow); }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--teal-dark); line-height: 1; }
-.stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.stats-row { display:flex; gap:10px; margin-bottom:16px; }
+.stat-card { flex:1; background:var(--white); border-radius:var(--radius); padding:12px; text-align:center; box-shadow:var(--shadow); }
+.stat-num { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:var(--teal-dark); line-height:1; }
+.stat-label { font-size:11px; color:var(--text-muted); margin-top:4px; text-transform:uppercase; letter-spacing:.5px; }
 
 /* ── Entry cards ── */
-.entries-list { display: flex; flex-direction: column; gap: 10px; }
-.entry-card { background: var(--white); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); border-left: 3px solid var(--teal); position: relative; }
-.entry-card:nth-child(even) { border-left-color: var(--gold); }
-.entry-name { font-weight: 500; font-size: 15px; margin-bottom: 2px; }
-.entry-clinic { font-size: 13px; color: var(--teal-dark); margin-bottom: 4px; }
-.entry-meta { font-size: 12px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 8px; }
-.entry-meta span::before { content: '· '; }
-.entry-meta span:first-child::before { content: ''; }
-.entry-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-.tag { font-size: 11px; background: rgba(136,186,185,0.15); color: var(--teal-dark); padding: 2px 8px; border-radius: 10px; font-weight: 500; }
-.tag.laser-tag { background: rgba(242,181,27,0.15); color: #7a5a00; }
-.entry-num { position: absolute; top: 10px; right: 12px; font-size: 11px; color: var(--text-muted); font-family: 'Cormorant Garamond', serif; }
-.entry-delete { position: absolute; bottom: 10px; right: 12px; font-size: 18px; color: var(--beige-dark); background: none; border: none; cursor: pointer; padding: 2px; line-height: 1; }
-.entry-delete:active { color: var(--error); }
+.entries-list { display:flex; flex-direction:column; gap:10px; }
+.entry-card { background:var(--white); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow); border-left:3px solid var(--teal); position:relative; }
+.entry-card:nth-child(even) { border-left-color:var(--gold); }
+.entry-name { font-weight:500; font-size:15px; margin-bottom:2px; }
+.entry-clinic { font-size:13px; color:var(--teal-dark); margin-bottom:4px; }
+.entry-meta { font-size:12px; color:var(--text-muted); display:flex; flex-wrap:wrap; gap:8px; }
+.entry-meta span::before { content:'· '; } .entry-meta span:first-child::before { content:''; }
+.entry-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:6px; }
+.tag { font-size:11px; background:rgba(136,186,185,0.15); color:var(--teal-dark); padding:2px 8px; border-radius:10px; font-weight:500; }
+.tag.laser-tag { background:rgba(242,181,27,0.15); color:#7a5a00; }
+.tag.order-tag { background:rgba(39,174,96,0.12); color:#1a7a42; cursor:pointer; }
+.entry-num { position:absolute; top:10px; right:12px; font-size:11px; color:var(--text-muted); font-family:'Cormorant Garamond',serif; }
+.entry-delete { position:absolute; bottom:10px; right:12px; font-size:18px; color:var(--beige-dark); background:none; border:none; cursor:pointer; padding:2px; }
+.entry-delete:active { color:var(--error); }
+.manager-note-wrap { margin-top:10px; border-top:1px dashed var(--beige-dark); padding-top:8px; }
+.manager-note-label { font-size:10px; font-weight:500; letter-spacing:.8px; text-transform:uppercase; color:var(--teal-dark); margin-bottom:4px; }
+.manager-note-input { width:100%; padding:7px 10px; font-family:'DM Sans',sans-serif; font-size:13px; border:1.5px solid var(--beige-dark); border-radius:6px; background:var(--bg); color:var(--text); outline:none; resize:none; height:56px; }
+.manager-note-input:focus { border-color:var(--teal); }
+.btn-make-order { margin-top:8px; width:100%; padding:9px; background:none; border:1.5px solid var(--success); border-radius:8px; color:var(--success); font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; cursor:pointer; }
+.btn-make-order:active { background:rgba(39,174,96,0.08); }
 
-/* Manager note in card */
-.manager-note-wrap { margin-top: 10px; border-top: 1px dashed var(--beige-dark); padding-top: 8px; }
-.manager-note-label { font-size: 10px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 4px; }
-.manager-note-input { width: 100%; padding: 7px 10px; font-family: 'DM Sans', sans-serif; font-size: 13px; border: 1.5px solid var(--beige-dark); border-radius: 6px; background: var(--bg); color: var(--text); outline: none; resize: none; height: 56px; transition: border-color 0.2s; }
-.manager-note-input:focus { border-color: var(--teal); }
+.empty-state { text-align:center; padding:40px 20px; color:var(--text-muted); }
+.empty-state .big { font-size:40px; margin-bottom:10px; }
+.empty-state p { font-size:14px; }
+.form-card { background:var(--white); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin-bottom:12px; }
+.divider { height:1px; background:var(--beige); margin:14px 0; }
 
-.empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
-.empty-state .big { font-size: 40px; margin-bottom: 10px; }
-.empty-state p { font-size: 14px; }
+/* ── Order tab ── */
+.client-info-box { background:var(--bg); border-radius:8px; padding:10px 12px; margin-top:10px; font-size:13px; line-height:1.6; }
 
-.form-card { background: var(--white); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
-.divider { height: 1px; background: var(--beige); margin: 14px 0; }
+.product-row { padding:10px 0; border-bottom:1px solid var(--beige); }
+.product-row:last-child { border-bottom:none; }
+.prod-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+.prod-name { font-size:13px; font-weight:500; flex:1; margin-right:8px; }
+.prod-base-price { font-size:12px; color:var(--text-muted); white-space:nowrap; }
+.prod-controls { display:flex; align-items:center; gap:8px; }
+.qty-btn { width:32px; height:32px; border:1.5px solid var(--beige-dark); border-radius:8px; background:var(--white); font-size:18px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--teal-dark); font-weight:500; }
+.qty-btn:active { background:var(--teal-light); }
+.qty-display { width:32px; text-align:center; font-size:16px; font-weight:500; flex-shrink:0; }
+.disc-wrap { display:flex; align-items:center; gap:4px; margin-left:auto; }
+.disc-wrap input { width:48px; padding:6px 6px; font-size:14px; text-align:center; }
+.disc-wrap span { font-size:12px; color:var(--text-muted); }
+.line-total { font-size:14px; font-weight:500; color:var(--teal-dark); min-width:56px; text-align:right; white-space:nowrap; }
+.product-row.has-qty { background:rgba(136,186,185,0.06); border-radius:8px; margin:0 -4px; padding:10px 4px; }
+
+.order-summary { border-top:2px solid var(--beige-dark); margin-top:4px; padding-top:14px; }
+.summary-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:14px; }
+.summary-row.total { font-size:18px; font-weight:600; color:var(--teal-dark); font-family:'Cormorant Garamond',serif; margin-top:6px; }
+.iva-toggle { display:flex; align-items:center; gap:8px; cursor:pointer; font-size:14px; }
+.iva-toggle input { width:18px; height:18px; accent-color:var(--teal-dark); cursor:pointer; }
 
 /* ── PIN modal ── */
-.pin-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
-.pin-overlay.show { display: flex; }
-.pin-box { background: var(--white); border-radius: var(--radius); padding: 24px 20px; width: 100%; max-width: 320px; box-shadow: 0 8px 40px rgba(0,0,0,0.2); }
-.pin-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--text); margin-bottom: 6px; font-weight: 600; }
-.pin-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
-.pin-input { width: 100%; padding: 12px 14px; font-size: 22px; letter-spacing: 8px; font-family: monospace; border: 1.5px solid var(--beige-dark); border-radius: 8px; background: var(--bg); outline: none; text-align: center; margin-bottom: 14px; transition: border-color 0.2s; -webkit-appearance: none; }
-.pin-input:focus { border-color: var(--teal); }
-.pin-input.pin-error { border-color: var(--error); animation: shake 0.3s; }
-@keyframes shake { 0%,100%{ transform: translateX(0); } 25%{ transform: translateX(-6px); } 75%{ transform: translateX(6px); } }
-.pin-btn-row { display: flex; gap: 8px; }
-.pin-cancel { flex: 1; padding: 12px; background: none; border: 1.5px solid var(--beige-dark); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; color: var(--text-muted); }
-.pin-confirm { flex: 1; padding: 12px; background: var(--error); border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; color: var(--white); }
+.pin-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; padding:24px; }
+.pin-overlay.show { display:flex; }
+.pin-box { background:var(--white); border-radius:var(--radius); padding:24px 20px; width:100%; max-width:320px; box-shadow:0 8px 40px rgba(0,0,0,0.2); }
+.pin-title { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text); margin-bottom:6px; font-weight:600; }
+.pin-subtitle { font-size:12px; color:var(--text-muted); margin-bottom:16px; }
+.pin-input { width:100%; padding:12px 14px; font-size:22px; letter-spacing:8px; font-family:monospace; border:1.5px solid var(--beige-dark); border-radius:8px; background:var(--bg); outline:none; text-align:center; margin-bottom:14px; -webkit-appearance:none; }
+.pin-input.pin-error { border-color:var(--error); animation:shake .3s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.pin-btn-row { display:flex; gap:8px; }
+.pin-cancel { flex:1; padding:12px; background:none; border:1.5px solid var(--beige-dark); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; cursor:pointer; color:var(--text-muted); }
+.pin-confirm { flex:1; padding:12px; background:var(--error); border:none; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:500; cursor:pointer; color:var(--white); }
 </style>
 </head>
 <body>
@@ -255,12 +209,15 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   <button class="tab" onclick="switchTab('list')">
     <span class="tab-icon">👥</span><span data-i18n="tabList">Visitatori</span>
   </button>
+  <button class="tab" onclick="switchTab('ordine')">
+    <span class="tab-icon">🛒</span><span data-i18n="tabOrder">Ordine</span>
+  </button>
 </div>
 
-<!-- ── FORM PANEL ── -->
+<!-- ══════════════════════════════════════════
+     FORM PANEL
+═══════════════════════════════════════════ -->
 <div id="panel-form" class="panel active">
-
-  <!-- Language selector -->
   <div class="lang-bar">
     <button class="lang-btn active" onclick="setLang('IT')">IT</button>
     <button class="lang-btn" onclick="setLang('EN')">EN</button>
@@ -314,8 +271,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
             <input type="email" id="email" autocomplete="off" oninput="clearContactError()">
           </div>
         </div>
-        <!-- Contact priority toggle: top=WhatsApp, bottom=email (default) -->
-        <div class="prio-toggle" title="Priorità contatto">
+        <div class="prio-toggle">
           <button class="prio-btn" id="prioWA" onclick="setPriority('WhatsApp')" type="button">💬</button>
           <div class="prio-sep"></div>
           <button class="prio-btn active" id="prioEM" onclick="setPriority('email')" type="button">✉️</button>
@@ -326,29 +282,15 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
     <div class="divider"></div>
     <div class="section-title" data-i18n="sectionLaser">Laser</div>
-
     <div class="check-grid" style="margin-bottom:14px">
-      <label class="check-item">
-        <input type="radio" name="laser" value="Nessun laser" checked>
-        <span data-i18n="laserNo">Nessun laser</span>
-      </label>
-      <label class="check-item">
-        <input type="radio" name="laser" value="Epilazione">
-        <span data-i18n="laserEpil">Epilazione</span>
-      </label>
-      <label class="check-item">
-        <input type="radio" name="laser" value="Anti-età">
-        <span data-i18n="laserAntiAge">Anti-età</span>
-      </label>
-      <label class="check-item">
-        <input type="radio" name="laser" value="Tatuaggi">
-        <span data-i18n="laserTattoo">Tatuaggi</span>
-      </label>
+      <label class="check-item"><input type="radio" name="laser" value="Nessun laser" checked><span data-i18n="laserNo">Nessun laser</span></label>
+      <label class="check-item"><input type="radio" name="laser" value="Epilazione"><span data-i18n="laserEpil">Epilazione</span></label>
+      <label class="check-item"><input type="radio" name="laser" value="Anti-età"><span data-i18n="laserAntiAge">Anti-età</span></label>
+      <label class="check-item"><input type="radio" name="laser" value="Tatuaggi"><span data-i18n="laserTattoo">Tatuaggi</span></label>
     </div>
 
     <div class="divider"></div>
     <div class="section-title" data-i18n="sectionInterest">Interesse prodotti</div>
-
     <div class="check-grid" style="margin-bottom:14px">
       <label class="check-item"><input type="checkbox" name="interesse" value="Lumicor"> Lumicor</label>
       <label class="check-item"><input type="checkbox" name="interesse" value="SPF"> SPF</label>
@@ -369,38 +311,81 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   </div>
 </div>
 
-<!-- ── LIST PANEL ── -->
+<!-- ══════════════════════════════════════════
+     LIST PANEL
+═══════════════════════════════════════════ -->
 <div id="panel-list" class="panel">
   <div class="reminder" id="reminder">
     <span style="font-size:18px;flex-shrink:0">💡</span>
     <span id="reminderText"></span>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-num" id="count">0</div>
-      <div class="stat-label" data-i18n="statVisitors">Visitatori</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="countEmail">0</div>
-      <div class="stat-label" data-i18n="statEmail">Con email</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="countPhone">0</div>
-      <div class="stat-label" data-i18n="statPhone">Con telefono</div>
-    </div>
+    <div class="stat-card"><div class="stat-num" id="count">0</div><div class="stat-label" data-i18n="statVisitors">Visitatori</div></div>
+    <div class="stat-card"><div class="stat-num" id="countEmail">0</div><div class="stat-label" data-i18n="statEmail">Con email</div></div>
+    <div class="stat-card"><div class="stat-num" id="countPhone">0</div><div class="stat-label" data-i18n="statPhone">Con telefono</div></div>
   </div>
-
   <div class="btn-row">
-    <button class="btn-export" id="btnExport" onclick="exportCSV()">
-      <span data-i18n="exportCSV">⬇ Scarica CSV</span>
-    </button>
-    <button class="btn-share" id="btnShare" onclick="shareCSV()" title="Condividi">📤</button>
+    <button class="btn-export" id="btnExport" onclick="exportCSV()"><span data-i18n="exportCSV">⬇ Scarica CSV</span></button>
+    <button class="btn-share" id="btnShare" onclick="shareCSV()">📤</button>
+  </div>
+  <div class="entries-list" id="entriesList"></div>
+  <button class="btn-danger" onclick="clearAll()" data-i18n="deleteAll">🗑 Cancella tutti i dati</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ORDER PANEL
+═══════════════════════════════════════════ -->
+<div id="panel-ordine" class="panel">
+
+  <div class="form-card">
+    <div class="section-title" data-i18n="sectionClient">Cliente</div>
+    <div class="field-group">
+      <label data-i18n="selectClient">Seleziona visitatore</label>
+      <select id="orderClient" onchange="onClientChange()"></select>
+    </div>
+    <div class="client-info-box" id="clientInfoBox" style="display:none"></div>
   </div>
 
-  <div class="entries-list" id="entriesList"></div>
+  <div class="form-card">
+    <div class="section-title" data-i18n="sectionProducts">Prodotti</div>
+    <div id="productList"></div>
+  </div>
 
-  <button class="btn-danger" onclick="clearAll()" data-i18n="deleteAll">🗑 Cancella tutti i dati</button>
+  <div class="form-card">
+    <div class="order-summary">
+      <div class="summary-row">
+        <span data-i18n="subtotal">Subtotale</span>
+        <span id="orderSubtotal">€ 0,00</span>
+      </div>
+      <div class="summary-row">
+        <label class="iva-toggle">
+          <input type="checkbox" id="ivaCheck" onchange="recalcOrder()">
+          <span data-i18n="ivaLabel">IVA 22%</span>
+        </label>
+        <span id="ivaAmount" style="color:var(--text-muted)">€ 0,00</span>
+      </div>
+      <div class="summary-row total">
+        <span data-i18n="totalLabel">TOTALE</span>
+        <span id="orderTotal">€ 0,00</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <label class="check-item" style="margin-bottom:14px">
+      <input type="checkbox" id="sendCopyCheck">
+      <span data-i18n="sendCopy">Invia copia al cliente</span>
+    </label>
+
+    <div class="field-group">
+      <label data-i18n="orderNote">Note ordine</label>
+      <textarea id="orderNote"></textarea>
+    </div>
+
+    <button class="btn-submit" id="btnSaveOrder" onclick="saveOrder()">
+      <span data-i18n="saveOrder">💾  Salva ordine</span>
+    </button>
+  </div>
 </div>
 
 <!-- ── PIN modal ── -->
@@ -419,19 +404,21 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
 <div class="toast" id="toast"></div>
 
+<script src="products.js"></script>
 <script>
 // ── Translations ─────────────────────────────────────────
 const T = {
   IT: {
-    lang:'it-IT', tabForm:'Registra', tabList:'Visitatori',
+    lang:'it-IT', tabForm:'Registra', tabList:'Visitatori', tabOrder:'Ordine',
     sectionData:'Dati del visitatore', sectionContact:'Contatti',
     sectionLaser:'Laser', sectionInterest:'Interesse prodotti',
+    sectionClient:'Cliente', sectionProducts:'Prodotti',
     fname:'Nome', lname:'Cognome', clinic:'Clinica / Studio',
     city:'Città', role:'Ruolo', phone:'Telefono / WhatsApp', email:'Email', note:'Note',
     save:'✓  Salva visitatore', saved:'✓ Salvato!',
     exportCSV:'⬇ Scarica CSV', deleteAll:'🗑 Cancella tutti i dati',
     errRequired:'⚠ Compila i campi obbligatori', errContact:'Inserisci telefono e email',
-    pinTitle:'🗑 Cancella tutti i dati', pinSub:'Inserisci il PIN per confermare. L\'azione è irreversibile.',
+    pinTitle:'🗑 Cancella tutti i dati', pinSub:'Inserisci il PIN per confermare.',
     pinCancel:'Annulla', pinConfirm:'Elimina tutto', pinWrong:'⚠ PIN errato',
     reminderText:'Hai {n} visitatori — ricordati di fare il backup CSV!',
     noData:'Nessun visitatore ancora registrato',
@@ -441,17 +428,26 @@ const T = {
     statVisitors:'Visitatori', statEmail:'Con email', statPhone:'Con telefono',
     savedMsg:(a,b)=>`✓ ${a} ${b} salvato`,
     roles:['— Seleziona —','Dermatologo/a','Medico Estetico','Cosmetologa','Fisioterapista','Laureato/a','Chirurgo','Medico di Familia','Titolare / Manager','Distributore','Altro'],
+    selectClient:'Seleziona visitatore', noClientOption:'— Seleziona —',
+    subtotal:'Subtotale', ivaLabel:'IVA 22%', totalLabel:'TOTALE',
+    sendCopy:'Invia copia al cliente', orderNote:'Note ordine',
+    saveOrder:'💾  Salva ordine', orderSaved:'✓ Ordine salvato!',
+    noClientErr:'⚠ Seleziona un cliente', noItemsErr:'⚠ Aggiungi almeno un prodotto',
+    discount:'Sconto', makeOrder:'🛒 Crea ordine',
+    emailSubject:(name)=>`Ordine MELICOR — ${name}`,
+    emailBody:(client, lines, sub, iva, tot, ivaInc, note)=>`Gentile ${client},\n\ngrazie per la Sua visita al nostro stand SIME 2026.\nDi seguito il riepilogo del Suo ordine:\n\n${lines}\n${'─'.repeat(44)}\nSubtotale:  € ${sub}${ivaInc?`\nIVA 22%:    € ${iva}`:''}\nTOTALE:     € ${tot}\n${'─'.repeat(44)}${note?`\n\nNote: ${note}`:''}\n\nIl team MELICOR\nStand C54 — SIME Congress, Roma 2026`,
   },
   EN: {
-    lang:'en-GB', tabForm:'Register', tabList:'Visitors',
+    lang:'en-GB', tabForm:'Register', tabList:'Visitors', tabOrder:'Order',
     sectionData:'Visitor details', sectionContact:'Contacts',
     sectionLaser:'Laser', sectionInterest:'Product interest',
+    sectionClient:'Client', sectionProducts:'Products',
     fname:'First name', lname:'Last name', clinic:'Clinic / Practice',
     city:'City', role:'Role', phone:'Phone / WhatsApp', email:'Email', note:'Notes',
     save:'✓  Save visitor', saved:'✓ Saved!',
     exportCSV:'⬇ Download CSV', deleteAll:'🗑 Delete all data',
     errRequired:'⚠ Fill in required fields', errContact:'Enter phone and email',
-    pinTitle:'🗑 Delete all data', pinSub:'Enter PIN to confirm. This action is irreversible.',
+    pinTitle:'🗑 Delete all data', pinSub:'Enter PIN to confirm.',
     pinCancel:'Cancel', pinConfirm:'Delete all', pinWrong:'⚠ Wrong PIN',
     reminderText:'You have {n} visitors — remember to export CSV!',
     noData:'No visitors registered yet',
@@ -461,19 +457,28 @@ const T = {
     statVisitors:'Visitors', statEmail:'With email', statPhone:'With phone',
     savedMsg:(a,b)=>`✓ ${a} ${b} saved`,
     roles:['— Select —','Dermatologist','Aesthetic Doctor','Cosmetologist','Physiotherapist','Graduate','Surgeon','GP / Family Doctor','Owner / Manager','Distributor','Other'],
+    selectClient:'Select visitor', noClientOption:'— Select —',
+    subtotal:'Subtotal', ivaLabel:'VAT 22%', totalLabel:'TOTAL',
+    sendCopy:'Send copy to client', orderNote:'Order notes',
+    saveOrder:'💾  Save order', orderSaved:'✓ Order saved!',
+    noClientErr:'⚠ Select a client', noItemsErr:'⚠ Add at least one product',
+    discount:'Discount', makeOrder:'🛒 Create order',
+    emailSubject:(name)=>`MELICOR Order — ${name}`,
+    emailBody:(client,lines,sub,iva,tot,ivaInc,note)=>`Dear ${client},\n\nThank you for visiting our SIME 2026 stand.\nBelow is your order summary:\n\n${lines}\n${'─'.repeat(44)}\nSubtotal:  € ${sub}${ivaInc?`\nVAT 22%:   € ${iva}`:''}\nTOTAL:     € ${tot}\n${'─'.repeat(44)}${note?`\n\nNotes: ${note}`:''}\n\nThe MELICOR team\nStand C54 — SIME Congress, Rome 2026`,
   },
   FR: {
-    lang:'fr-FR', tabForm:'Enregistrer', tabList:'Visiteurs',
-    sectionData:'Données du visiteur', sectionContact:'Contacts',
+    lang:'fr-FR', tabForm:'Enregistrer', tabList:'Visiteurs', tabOrder:'Commande',
+    sectionData:'Données visiteur', sectionContact:'Contacts',
     sectionLaser:'Laser', sectionInterest:'Intérêt produits',
+    sectionClient:'Client', sectionProducts:'Produits',
     fname:'Prénom', lname:'Nom', clinic:'Clinique / Cabinet',
     city:'Ville', role:'Rôle', phone:'Téléphone / WhatsApp', email:'E-mail', note:'Notes',
     save:'✓  Enregistrer', saved:'✓ Enregistré!',
     exportCSV:'⬇ Télécharger CSV', deleteAll:'🗑 Supprimer tout',
-    errRequired:'⚠ Remplissez les champs obligatoires', errContact:'Entrez téléphone et e-mail',
-    pinTitle:'🗑 Supprimer toutes les données', pinSub:'Entrez le PIN pour confirmer.',
+    errRequired:'⚠ Remplissez les champs', errContact:'Entrez téléphone et e-mail',
+    pinTitle:'🗑 Supprimer tout', pinSub:'Entrez le PIN pour confirmer.',
     pinCancel:'Annuler', pinConfirm:'Tout supprimer', pinWrong:'⚠ PIN incorrect',
-    reminderText:'Vous avez {n} visiteurs — pensez à exporter le CSV !',
+    reminderText:'Vous avez {n} visiteurs — pensez à exporter !',
     noData:'Aucun visiteur enregistré',
     dataDeleted:'Données supprimées', csvDownloaded:'📥 CSV téléchargé',
     managerNote:'Notes manager', managerNotePlaceholder:'Commentaire interne…',
@@ -481,11 +486,20 @@ const T = {
     statVisitors:'Visiteurs', statEmail:'Avec e-mail', statPhone:'Avec téléphone',
     savedMsg:(a,b)=>`✓ ${a} ${b} enregistré`,
     roles:['— Sélectionner —','Dermatologue','Médecin esthétique','Cosmétologue','Kinésithérapeute','Diplômé/e','Chirurgien/ne','Médecin généraliste','Propriétaire / Manager','Distributeur','Autre'],
+    selectClient:'Sélectionner visiteur', noClientOption:'— Sélectionner —',
+    subtotal:'Sous-total', ivaLabel:'TVA 22%', totalLabel:'TOTAL',
+    sendCopy:'Envoyer copie au client', orderNote:'Notes commande',
+    saveOrder:'💾  Enregistrer commande', orderSaved:'✓ Commande enregistrée!',
+    noClientErr:'⚠ Sélectionnez un client', noItemsErr:'⚠ Ajoutez au moins un produit',
+    discount:'Remise', makeOrder:'🛒 Créer commande',
+    emailSubject:(name)=>`Commande MELICOR — ${name}`,
+    emailBody:(client,lines,sub,iva,tot,ivaInc,note)=>`Cher(e) ${client},\n\nMerci pour votre visite à notre stand SIME 2026.\nVoici le récapitulatif de votre commande:\n\n${lines}\n${'─'.repeat(44)}\nSous-total: € ${sub}${ivaInc?`\nTVA 22%:    € ${iva}`:''}\nTOTAL:      € ${tot}\n${'─'.repeat(44)}${note?`\n\nNotes: ${note}`:''}\n\nL'équipe MELICOR\nStand C54 — SIME Congress, Rome 2026`,
   },
   DE: {
-    lang:'de-DE', tabForm:'Registrieren', tabList:'Besucher',
+    lang:'de-DE', tabForm:'Registrieren', tabList:'Besucher', tabOrder:'Bestellung',
     sectionData:'Besucherdaten', sectionContact:'Kontakte',
     sectionLaser:'Laser', sectionInterest:'Produktinteresse',
+    sectionClient:'Kunde', sectionProducts:'Produkte',
     fname:'Vorname', lname:'Nachname', clinic:'Klinik / Praxis',
     city:'Stadt', role:'Rolle', phone:'Telefon / WhatsApp', email:'E-Mail', note:'Notizen',
     save:'✓  Besucher speichern', saved:'✓ Gespeichert!',
@@ -493,27 +507,36 @@ const T = {
     errRequired:'⚠ Pflichtfelder ausfüllen', errContact:'Telefon und E-Mail eingeben',
     pinTitle:'🗑 Alle Daten löschen', pinSub:'PIN eingeben zum Bestätigen.',
     pinCancel:'Abbrechen', pinConfirm:'Alles löschen', pinWrong:'⚠ Falscher PIN',
-    reminderText:'Sie haben {n} Besucher — denken Sie ans CSV-Export!',
+    reminderText:'Sie haben {n} Besucher — denken Sie ans Export!',
     noData:'Noch keine Besucher registriert',
     dataDeleted:'Daten gelöscht', csvDownloaded:'📥 CSV heruntergeladen',
     managerNote:'Manager-Notizen', managerNotePlaceholder:'Interner Kommentar…',
     laserNo:'Kein Laser', laserEpil:'Epilation', laserAntiAge:'Anti-Aging', laserTattoo:'Tätowierung',
     statVisitors:'Besucher', statEmail:'Mit E-Mail', statPhone:'Mit Telefon',
     savedMsg:(a,b)=>`✓ ${a} ${b} gespeichert`,
-    roles:['— Auswählen —','Dermatologe/-in','Ästhetischer Arzt/Ärztin','Kosmetologe/-in','Physiotherapeut/-in','Absolvent/-in','Chirurg/-in','Hausarzt/-ärztin','Inhaber / Manager','Distributor','Sonstiges'],
+    roles:['— Auswählen —','Dermatologe/-in','Ästh. Arzt/Ärztin','Kosmetologe/-in','Physiotherapeut/-in','Absolvent/-in','Chirurg/-in','Hausarzt/-ärztin','Inhaber / Manager','Distributor','Sonstiges'],
+    selectClient:'Besucher auswählen', noClientOption:'— Auswählen —',
+    subtotal:'Zwischensumme', ivaLabel:'MwSt. 22%', totalLabel:'GESAMT',
+    sendCopy:'Kopie an Kunden senden', orderNote:'Bestellnotizen',
+    saveOrder:'💾  Bestellung speichern', orderSaved:'✓ Bestellung gespeichert!',
+    noClientErr:'⚠ Kunden auswählen', noItemsErr:'⚠ Mind. ein Produkt hinzufügen',
+    discount:'Rabatt', makeOrder:'🛒 Bestellung erstellen',
+    emailSubject:(name)=>`MELICOR Bestellung — ${name}`,
+    emailBody:(client,lines,sub,iva,tot,ivaInc,note)=>`Sehr geehrte/r ${client},\n\nVielen Dank für Ihren Besuch an unserem SIME 2026 Stand.\nNachfolgend Ihre Bestellübersicht:\n\n${lines}\n${'─'.repeat(44)}\nZwischensumme: € ${sub}${ivaInc?`\nMwSt. 22%:     € ${iva}`:''}\nGESAMT:        € ${tot}\n${'─'.repeat(44)}${note?`\n\nNotizen: ${note}`:''}\n\nDas MELICOR Team\nStand C54 — SIME Congress, Rom 2026`,
   },
   SP: {
-    lang:'es-ES', tabForm:'Registrar', tabList:'Visitantes',
+    lang:'es-ES', tabForm:'Registrar', tabList:'Visitantes', tabOrder:'Pedido',
     sectionData:'Datos del visitante', sectionContact:'Contactos',
     sectionLaser:'Láser', sectionInterest:'Interés en productos',
+    sectionClient:'Cliente', sectionProducts:'Productos',
     fname:'Nombre', lname:'Apellido', clinic:'Clínica / Consulta',
-    city:'Ciudad', role:'Rol', phone:'Teléfono / WhatsApp', email:'Correo electrónico', note:'Notas',
+    city:'Ciudad', role:'Rol', phone:'Teléfono / WhatsApp', email:'Correo', note:'Notas',
     save:'✓  Guardar visitante', saved:'✓ ¡Guardado!',
     exportCSV:'⬇ Descargar CSV', deleteAll:'🗑 Eliminar todos los datos',
-    errRequired:'⚠ Rellena los campos obligatorios', errContact:'Introduce teléfono y correo',
+    errRequired:'⚠ Rellena los campos', errContact:'Introduce teléfono y correo',
     pinTitle:'🗑 Eliminar todos los datos', pinSub:'Introduce el PIN para confirmar.',
     pinCancel:'Cancelar', pinConfirm:'Eliminar todo', pinWrong:'⚠ PIN incorrecto',
-    reminderText:'Tienes {n} visitantes — ¡recuerda exportar el CSV!',
+    reminderText:'Tienes {n} visitantes — ¡exporta el CSV!',
     noData:'Ningún visitante registrado aún',
     dataDeleted:'Datos eliminados', csvDownloaded:'📥 CSV descargado',
     managerNote:'Notas del manager', managerNotePlaceholder:'Comentario interno…',
@@ -521,19 +544,24 @@ const T = {
     statVisitors:'Visitantes', statEmail:'Con correo', statPhone:'Con teléfono',
     savedMsg:(a,b)=>`✓ ${a} ${b} guardado`,
     roles:['— Seleccionar —','Dermatólogo/a','Médico Estético','Cosmetólogo/a','Fisioterapeuta','Licenciado/a','Cirujano/a','Médico de Familia','Propietario / Manager','Distribuidor','Otro'],
+    selectClient:'Seleccionar visitante', noClientOption:'— Seleccionar —',
+    subtotal:'Subtotal', ivaLabel:'IVA 22%', totalLabel:'TOTAL',
+    sendCopy:'Enviar copia al cliente', orderNote:'Notas del pedido',
+    saveOrder:'💾  Guardar pedido', orderSaved:'✓ ¡Pedido guardado!',
+    noClientErr:'⚠ Selecciona un cliente', noItemsErr:'⚠ Añade al menos un producto',
+    discount:'Descuento', makeOrder:'🛒 Crear pedido',
+    emailSubject:(name)=>`Pedido MELICOR — ${name}`,
+    emailBody:(client,lines,sub,iva,tot,ivaInc,note)=>`Estimado/a ${client},\n\nGracias por su visita a nuestro stand SIME 2026.\nA continuación el resumen de su pedido:\n\n${lines}\n${'─'.repeat(44)}\nSubtotal:  € ${sub}${ivaInc?`\nIVA 22%:   € ${iva}`:''}\nTOTAL:     € ${tot}\n${'─'.repeat(44)}${note?`\n\nNotas: ${note}`:''}\n\nEl equipo MELICOR\nStand C54 — SIME Congress, Roma 2026`,
   }
 };
 
 let curLang = 'IT';
-function t() { return T[curLang]; }
+const t = () => T[curLang];
+const fmt = n => n.toFixed(2).replace('.',',');
 
 function setLang(code) {
   curLang = code;
-  // Update lang buttons
-  document.querySelectorAll('.lang-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent === code)
-  );
-  // Update all data-i18n elements
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === code));
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (T[code][key] !== undefined) el.textContent = T[code][key];
@@ -541,21 +569,14 @@ function setLang(code) {
   // Rebuild ruolo select
   const sel = document.getElementById('ruolo');
   const cur = sel.value;
-  sel.innerHTML = T[code].roles.map((r, i) => `<option value="${T.IT.roles[i]}">${r}</option>`).join('');
-  // Try to keep the same selection
+  sel.innerHTML = T[code].roles.map((r,i) => `<option value="${T.IT.roles[i]}">${r}</option>`).join('');
   if ([...sel.options].some(o => o.value === cur)) sel.value = cur;
-  // Update laser labels
-  const laserKeys = ['laserNo','laserEpil','laserAntiAge','laserTattoo'];
+  // Laser labels
   document.querySelectorAll('[data-i18n^="laser"]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (T[code][key]) el.textContent = T[code][key];
+    const v = T[code][el.getAttribute('data-i18n')];
+    if (v) el.textContent = v;
   });
-  // Update manager note placeholders
-  document.querySelectorAll('.manager-note-input').forEach(el =>
-    el.placeholder = T[code].managerNotePlaceholder
-  );
-  // Update note placeholder
-  document.getElementById('note').placeholder = T[code].notePlaceholder || '';
+  document.querySelectorAll('.manager-note-input').forEach(el => el.placeholder = T[code].managerNotePlaceholder);
 }
 
 // ── Contact priority ─────────────────────────────────────
@@ -565,62 +586,61 @@ function setPriority(p) {
   document.getElementById('prioWA').classList.toggle('active', p === 'WhatsApp');
   document.getElementById('prioEM').classList.toggle('active', p === 'email');
 }
-function clearContactError() {
-  document.getElementById('contactGroup').classList.remove('error');
-}
+function clearContactError() { document.getElementById('contactGroup').classList.remove('error'); }
 
 // ── IndexedDB ────────────────────────────────────────────
-const DB_NAME = 'MelicorDB2', DB_VER = 1, STORE = 'entries';
+const DB_NAME = 'MelicorDB2', DB_VER = 2;
 let db = null;
 function openDB() {
   return new Promise((res, rej) => {
     const req = indexedDB.open(DB_NAME, DB_VER);
     req.onupgradeneeded = e => {
       const d = e.target.result;
-      if (!d.objectStoreNames.contains(STORE)) d.createObjectStore(STORE, { keyPath: 'id' });
+      if (!d.objectStoreNames.contains('entries')) d.createObjectStore('entries', { keyPath: 'id' });
+      if (!d.objectStoreNames.contains('orders'))  d.createObjectStore('orders',  { keyPath: 'id' });
     };
     req.onsuccess = e => { db = e.target.result; res(db); };
-    req.onerror = () => rej(req.error);
+    req.onerror   = () => rej(req.error);
   });
 }
-const store = (m='readonly') => db.transaction(STORE,m).objectStore(STORE);
-const dbGetAll = () => new Promise((res,rej)=>{ const r=store().getAll(); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); });
-const dbAdd    = e  => new Promise((res,rej)=>{ const r=store('readwrite').add(e); r.onsuccess=res; r.onerror=()=>rej(r.error); });
-const dbPut    = e  => new Promise((res,rej)=>{ const r=store('readwrite').put(e); r.onsuccess=res; r.onerror=()=>rej(r.error); });
-const dbDel    = id => new Promise((res,rej)=>{ const r=store('readwrite').delete(id); r.onsuccess=res; r.onerror=()=>rej(r.error); });
-const dbClear  = () => new Promise((res,rej)=>{ const r=store('readwrite').clear(); r.onsuccess=res; r.onerror=()=>rej(r.error); });
+const st  = (s,m='readonly') => db.transaction(s,m).objectStore(s);
+const dbGetAll    = s   => new Promise((res,rej)=>{ const r=st(s).getAll();         r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); });
+const dbAdd       = (s,e)=> new Promise((res,rej)=>{ const r=st(s,'readwrite').add(e); r.onsuccess=res; r.onerror=()=>rej(r.error); });
+const dbPut       = (s,e)=> new Promise((res,rej)=>{ const r=st(s,'readwrite').put(e); r.onsuccess=res; r.onerror=()=>rej(r.error); });
+const dbDel       = (s,id)=>new Promise((res,rej)=>{ const r=st(s,'readwrite').delete(id); r.onsuccess=res; r.onerror=()=>rej(r.error); });
+const dbClearAll  = ()   => Promise.all(['entries','orders'].map(s=>new Promise((res,rej)=>{ const r=st(s,'readwrite').clear(); r.onsuccess=res; r.onerror=()=>rej(r.error); })));
 
 // ── UI helpers ───────────────────────────────────────────
 function showToast(msg, type='') {
   const el = document.getElementById('toast');
-  el.textContent = msg; el.className = 'toast show' + (type?' '+type:'');
-  setTimeout(() => el.className='toast', 2800);
+  el.textContent = msg; el.className = 'toast show'+(type?' '+type:'');
+  setTimeout(()=>el.className='toast', 2800);
 }
 function setStatus(state, text) {
-  document.getElementById('dbDot').className = 'backup-dot' + (state==='ok'?'':' '+state);
+  document.getElementById('dbDot').className = 'backup-dot'+(state==='ok'?'':' '+state);
   document.getElementById('dbStatus').textContent = text;
 }
-function setLastSave(ts) {
-  document.getElementById('lastSaveTime').textContent = ts ? '💾 '+ts : '';
-}
+function setLastSave(ts) { document.getElementById('lastSaveTime').textContent = ts?'💾 '+ts:''; }
+
 function switchTab(name) {
   document.querySelectorAll('.tab').forEach((tab,i) =>
-    tab.classList.toggle('active', (i===0)===(name==='form')));
+    tab.classList.toggle('active', ['form','list','ordine'][i] === name));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-'+name).classList.add('active');
-  if (name==='list') renderList();
+  if (name==='list')   renderList();
+  if (name==='ordine') initOrderTab();
 }
 
-// ── CSV ──────────────────────────────────────────────────
+// ── CSV (visitors) ───────────────────────────────────────
 function buildCSV(entries) {
   const hdr = ['N.','ts','First_name','Last_name','name','citta','ruolo','phone','email',
                'contact_priority','laser','conf_interest','note','language','manager_note'];
   const rows = entries.map((e,i) => [
-    i+1, e.ts, e.nome, e.cognome, e.clinica, e.citta, e.ruolo,
-    e.telefono, e.email, e.contact_priority, e.laser, e.interessi,
-    e.note, e.language, e.manager_note
-  ].map(v => `"${String(v||'').replace(/"/g,'""')}"`));
-  return '\uFEFF' + [hdr,...rows].map(r=>r.join(',')).join('\r\n');
+    i+1,e.ts,e.nome,e.cognome,e.clinica,e.citta,e.ruolo,
+    e.telefono,e.email,e.contact_priority,e.laser,e.interessi,
+    e.note,e.language,e.manager_note
+  ].map(v=>`"${String(v||'').replace(/"/g,'""')}"`));
+  return '\uFEFF'+[hdr,...rows].map(r=>r.join(',')).join('\r\n');
 }
 function triggerDownload(csv, name) {
   const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
@@ -630,53 +650,46 @@ function triggerDownload(csv, name) {
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 async function exportCSV() {
-  const all = await dbGetAll(); if (!all.length) return;
+  const all = await dbGetAll('entries'); if (!all.length) return;
   all.sort((a,b)=>a.id-b.id);
   triggerDownload(buildCSV(all), `MELICOR_SIME_${new Date().toISOString().slice(0,10)}.csv`);
   showToast(t().csvDownloaded,'success');
 }
 async function shareCSV() {
-  const all = await dbGetAll(); if (!all.length){showToast('—');return;}
+  const all = await dbGetAll('entries'); if (!all.length) return;
   all.sort((a,b)=>a.id-b.id);
   const csv = buildCSV(all);
-  const file = new File([new Blob([csv],{type:'text/csv'})], 'MELICOR_SIME_visitatori.csv',{type:'text/csv'});
+  const file = new File([new Blob([csv],{type:'text/csv'})], 'MELICOR_SIME.csv',{type:'text/csv'});
   if (navigator.canShare?.({files:[file]})) {
     try { await navigator.share({files:[file],title:'MELICOR SIME',text:`${all.length} visitatori`}); }
     catch(e){ if(e.name!=='AbortError') showToast('—','warn'); }
-  } else {
-    triggerDownload(csv,'MELICOR_SIME_visitatori.csv');
-  }
+  } else { triggerDownload(csv,'MELICOR_SIME.csv'); }
 }
 
-// ── Save entry ───────────────────────────────────────────
+// ── Save visitor ─────────────────────────────────────────
 async function saveEntry() {
   let valid = true;
   ['nome','cognome'].forEach(id => {
     const el = document.getElementById(id);
-    const ok = !!el.value.trim();
-    el.classList.toggle('error',!ok); if(!ok) valid=false;
+    const ok = !!el.value.trim(); el.classList.toggle('error',!ok); if(!ok) valid=false;
   });
   const tel   = document.getElementById('telefono').value.trim();
   const email = document.getElementById('email').value.trim();
-  if (!tel || !email) {
-    document.getElementById('contactGroup').classList.add('error'); valid=false;
-  }
+  if (!tel || !email) { document.getElementById('contactGroup').classList.add('error'); valid=false; }
   if (!valid) { showToast(t().errRequired); return; }
 
-  const nome    = document.getElementById('nome').value.trim();
+  const nome = document.getElementById('nome').value.trim();
   const cognome = document.getElementById('cognome').value.trim();
-  const ts      = new Date().toLocaleString('it-IT');
-  const laser   = document.querySelector('input[name=laser]:checked')?.value || '';
+  const ts = new Date().toLocaleString('it-IT');
 
   const entry = {
     id: Date.now(), ts, nome, cognome,
     clinica:          document.getElementById('clinica').value.trim(),
     citta:            document.getElementById('citta').value.trim(),
     ruolo:            document.getElementById('ruolo').value,
-    telefono:         tel,
-    email:            email.toLowerCase(),
+    telefono:         tel, email: email.toLowerCase(),
     contact_priority: contactPriority,
-    laser:            laser,
+    laser:            document.querySelector('input[name=laser]:checked')?.value || '',
     interessi:        [...document.querySelectorAll('input[name=interesse]:checked')].map(c=>c.value).join('; '),
     note:             document.getElementById('note').value.trim(),
     language:         T[curLang].lang,
@@ -684,54 +697,47 @@ async function saveEntry() {
   };
 
   try {
-    await dbAdd(entry);
-    // Reset
+    await dbAdd('entries', entry);
     ['nome','cognome','clinica','citta','telefono','email','note'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('ruolo').value = '';
+    document.getElementById('ruolo').value='';
     document.querySelectorAll('input[name=interesse]').forEach(c=>c.checked=false);
-    document.querySelector('input[name=laser][value="Nessun laser"]').checked = true;
+    document.querySelector('input[name=laser][value="Nessun laser"]').checked=true;
     document.querySelectorAll('.error').forEach(e=>e.classList.remove('error'));
     document.getElementById('contactGroup').classList.remove('error');
-    contactPriority = 'email';
+    contactPriority='email';
     document.getElementById('prioWA').classList.remove('active');
     document.getElementById('prioEM').classList.add('active');
 
     const btn = document.getElementById('btnSave');
-    const savedText = t().saved;
-    btn.querySelector('[data-i18n=save]').textContent = savedText;
+    btn.querySelector('[data-i18n=save]').textContent = t().saved;
     btn.classList.add('success');
     setTimeout(()=>{ btn.querySelector('[data-i18n=save]').textContent=t().save; btn.classList.remove('success'); },1800);
 
-    const all = await dbGetAll();
-    setStatus('ok', `DB ✓  (${all.length})`);
+    const all = await dbGetAll('entries');
+    setStatus('ok',`DB ✓  (${all.length})`);
     setLastSave(ts.slice(0,16));
     showToast(t().savedMsg(nome,cognome),'success');
-
-    if (all.length % 10 === 0)
-      setTimeout(()=>showToast(t().reminderText.replace('{n}',all.length),'warn'),1200);
-
-  } catch(err) {
-    console.error(err); setStatus('err','Errore DB!');
-    showToast('⚠ Errore salvataggio','warn');
-  }
+    if (all.length%10===0) setTimeout(()=>showToast(t().reminderText.replace('{n}',all.length),'warn'),1200);
+  } catch(err) { setStatus('err','Errore DB!'); showToast('⚠ Errore salvataggio','warn'); }
 }
 
 // ── Manager note ─────────────────────────────────────────
 async function saveManagerNote(el) {
   const id = Number(el.getAttribute('data-id'));
-  const all = await dbGetAll();
-  const entry = all.find(e=>e.id===id);
-  if (!entry) return;
+  const all = await dbGetAll('entries');
+  const entry = all.find(e=>e.id===id); if (!entry) return;
   entry.manager_note = el.value;
-  await dbPut(entry);
+  await dbPut('entries', entry);
 }
 
-// ── Render list ──────────────────────────────────────────
+// ── Render visitor list ──────────────────────────────────
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 async function renderList() {
-  const all = await dbGetAll();
+  const all = await dbGetAll('entries');
   all.sort((a,b)=>a.id-b.id);
+  const orders = await dbGetAll('orders');
+  const orderedIds = new Set(orders.map(o=>o.client_id));
   const tr = t();
 
   document.getElementById('count').textContent      = all.length;
@@ -744,13 +750,10 @@ async function renderList() {
   if (all.length>0 && all.length%10===0) {
     document.getElementById('reminderText').textContent = tr.reminderText.replace('{n}',all.length);
     rem.classList.add('show');
-  } else { rem.classList.remove('show'); }
+  } else rem.classList.remove('show');
 
   const list = document.getElementById('entriesList');
-  if (!all.length) {
-    list.innerHTML=`<div class="empty-state"><div class="big">📋</div><p>${tr.noData}</p></div>`;
-    return;
-  }
+  if (!all.length) { list.innerHTML=`<div class="empty-state"><div class="big">📋</div><p>${tr.noData}</p></div>`; return; }
 
   list.innerHTML = [...all].reverse().map((e,i)=>`
     <div class="entry-card">
@@ -763,8 +766,9 @@ async function renderList() {
         ${e.telefono ?`<span>${e.contact_priority==='WhatsApp'?'💬':'📞'} ${esc(e.telefono)}</span>`:''}
         ${e.email    ?`<span>✉ ${esc(e.email)}</span>`:''}
       </div>
-      ${e.laser && e.laser!=='Nessun laser'?`<div class="entry-tags"><span class="tag laser-tag">🔆 ${esc(e.laser)}</span></div>`:''}
+      ${e.laser&&e.laser!=='Nessun laser'?`<div class="entry-tags"><span class="tag laser-tag">🔆 ${esc(e.laser)}</span></div>`:''}
       ${e.interessi?`<div class="entry-tags">${e.interessi.split('; ').map(tag=>`<span class="tag">${esc(tag)}</span>`).join('')}</div>`:''}
+      ${orderedIds.has(e.id)?`<div class="entry-tags"><span class="tag order-tag">🛒 ordine</span></div>`:''}
       ${e.note?`<div style="margin-top:6px;font-size:12px;color:var(--text-muted);font-style:italic">${esc(e.note)}</div>`:''}
       <div style="font-size:11px;color:var(--beige-dark);margin-top:6px">${e.ts}${e.language?' · '+e.language:''}</div>
       <div class="manager-note-wrap">
@@ -773,14 +777,15 @@ async function renderList() {
           onblur="saveManagerNote(this)"
           placeholder="${esc(tr.managerNotePlaceholder)}">${esc(e.manager_note||'')}</textarea>
       </div>
+      <button class="btn-make-order" onclick="openOrderFor(${e.id})">${tr.makeOrder}</button>
       <button class="entry-delete" onclick="deleteEntry(${e.id})">×</button>
     </div>
   `).join('');
 }
 
 async function deleteEntry(id) {
-  if (!confirm(t().deleteOne)) return;
-  await dbDel(id); renderList();
+  if (!confirm(t().deleteOne || 'Eliminare?')) return;
+  await dbDel('entries', id); renderList();
 }
 
 // ── PIN / delete all ─────────────────────────────────────
@@ -798,8 +803,173 @@ async function confirmPin() {
     inp.classList.add('pin-error'); inp.value='';
     showToast(t().pinWrong,'warn'); return;
   }
-  closePin(); await dbClear(); setLastSave(''); renderList();
+  closePin(); await dbClearAll(); setLastSave(''); renderList();
   showToast(t().dataDeleted);
+}
+
+// ── Order tab ────────────────────────────────────────────
+let orderQtys = {}, orderDiscs = {};
+let pendingClientId = null;
+
+async function initOrderTab() {
+  const all = await dbGetAll('entries');
+  all.sort((a,b)=>b.id-a.id); // newest first
+  const sel = document.getElementById('orderClient');
+  const tr = t();
+  sel.innerHTML = `<option value="">${tr.noClientOption}</option>` +
+    all.map(e=>`<option value="${e.id}">${esc(e.nome)} ${esc(e.cognome)}${e.clinica?' — '+esc(e.clinica):''}</option>`).join('');
+
+  if (pendingClientId) { sel.value = pendingClientId; pendingClientId = null; onClientChange(); }
+  renderProductList();
+}
+
+function onClientChange() {
+  const id = Number(document.getElementById('orderClient').value);
+  const box = document.getElementById('clientInfoBox');
+  if (!id) { box.style.display='none'; return; }
+  dbGetAll('entries').then(all => {
+    const e = all.find(x=>x.id===id);
+    if (!e) return;
+    box.style.display = 'block';
+    box.innerHTML = `<strong>${esc(e.nome)} ${esc(e.cognome)}</strong>${e.clinica?'<br>'+esc(e.clinica):''}
+      ${e.citta?'<br>'+esc(e.citta):''}${e.telefono?'<br>📞 '+esc(e.telefono):''}
+      ${e.email?'<br>✉ '+esc(e.email):''}`;
+  });
+}
+
+function renderProductList() {
+  const tr = t();
+  document.getElementById('productList').innerHTML = PRODUCTS.map(p => `
+    <div class="product-row" id="prow-${p.sku}">
+      <div class="prod-top">
+        <span class="prod-name">${esc(p.name)}</span>
+        <span class="prod-base-price">€ ${fmt(p.price)}</span>
+      </div>
+      <div class="prod-controls">
+        <button class="qty-btn" onclick="qtyChange('${p.sku}',-1)" type="button">−</button>
+        <span class="qty-display" id="qty-${p.sku}">0</span>
+        <button class="qty-btn" onclick="qtyChange('${p.sku}',1)" type="button">+</button>
+        <div class="disc-wrap">
+          <input type="number" id="disc-${p.sku}" value="0" min="0" max="100"
+                 style="width:48px;padding:6px;font-size:13px;text-align:center"
+                 onchange="recalcOrder()" oninput="recalcOrder()">
+          <span>%</span>
+        </div>
+        <span class="line-total" id="line-${p.sku}">—</span>
+      </div>
+    </div>
+  `).join('');
+  recalcOrder();
+}
+
+function qtyChange(sku, delta) {
+  orderQtys[sku] = Math.max(0, (orderQtys[sku]||0) + delta);
+  document.getElementById('qty-'+sku).textContent = orderQtys[sku];
+  document.getElementById('prow-'+sku).classList.toggle('has-qty', orderQtys[sku]>0);
+  recalcOrder();
+}
+
+function recalcOrder() {
+  let subtotal = 0;
+  PRODUCTS.forEach(p => {
+    const qty  = orderQtys[p.sku] || 0;
+    const disc = Number(document.getElementById('disc-'+p.sku)?.value || 0);
+    orderDiscs[p.sku] = disc;
+    const line = qty > 0 ? p.price * qty * (1 - disc/100) : 0;
+    const el = document.getElementById('line-'+p.sku);
+    if (el) el.textContent = qty > 0 ? `€ ${fmt(line)}` : '—';
+    subtotal += line;
+  });
+  const ivaInc = document.getElementById('ivaCheck').checked;
+  const ivaAmt = ivaInc ? subtotal * 0.22 : 0;
+  const total  = subtotal + ivaAmt;
+  document.getElementById('orderSubtotal').textContent = `€ ${fmt(subtotal)}`;
+  document.getElementById('ivaAmount').textContent     = `€ ${fmt(ivaAmt)}`;
+  document.getElementById('orderTotal').textContent    = `€ ${fmt(total)}`;
+}
+
+async function saveOrder() {
+  const clientId = Number(document.getElementById('orderClient').value);
+  if (!clientId) { showToast(t().noClientErr,'warn'); return; }
+
+  const items = PRODUCTS
+    .filter(p => (orderQtys[p.sku]||0) > 0)
+    .map(p => ({
+      sku: p.sku, name: p.name, price: p.price,
+      qty: orderQtys[p.sku], discount: orderDiscs[p.sku]||0,
+      line_total: p.price * orderQtys[p.sku] * (1-(orderDiscs[p.sku]||0)/100)
+    }));
+
+  if (!items.length) { showToast(t().noItemsErr,'warn'); return; }
+
+  const ivaInc   = document.getElementById('ivaCheck').checked;
+  const subtotal = items.reduce((s,i)=>s+i.line_total,0);
+  const ivaAmt   = ivaInc ? subtotal*0.22 : 0;
+  const total    = subtotal + ivaAmt;
+  const note     = document.getElementById('orderNote').value.trim();
+  const sendCopy = document.getElementById('sendCopyCheck').checked;
+  const ts       = new Date().toLocaleString('it-IT');
+
+  const order = {
+    id: Date.now(), ts, client_id: clientId,
+    items, subtotal, iva_inc: ivaInc, iva_amount: ivaAmt, total,
+    note, sent_to_client: sendCopy
+  };
+
+  await dbAdd('orders', order);
+  showToast(t().orderSaved,'success');
+
+  // Send email if checked
+  if (sendCopy) {
+    const all = await dbGetAll('entries');
+    const client = all.find(e=>e.id===clientId);
+    if (client) sendOrderEmail(client, order);
+  }
+
+  // Reset order form
+  orderQtys = {}; orderDiscs = {};
+  PRODUCTS.forEach(p => {
+    const qEl=document.getElementById('qty-'+p.sku); if(qEl) qEl.textContent='0';
+    const dEl=document.getElementById('disc-'+p.sku); if(dEl) dEl.value='0';
+    const lEl=document.getElementById('line-'+p.sku); if(lEl) lEl.textContent='—';
+    const row=document.getElementById('prow-'+p.sku); if(row) row.classList.remove('has-qty');
+  });
+  document.getElementById('ivaCheck').checked=false;
+  document.getElementById('sendCopyCheck').checked=false;
+  document.getElementById('orderNote').value='';
+  document.getElementById('orderClient').value='';
+  document.getElementById('clientInfoBox').style.display='none';
+  recalcOrder();
+}
+
+function sendOrderEmail(client, order) {
+  const tr = t();
+  const maxNameLen = 28;
+  const lines = order.items.map(i => {
+    const nm = i.name.length > maxNameLen ? i.name.slice(0,maxNameLen-1)+'…' : i.name.padEnd(maxNameLen);
+    return `${nm}  x${i.qty}  -${i.discount}%  € ${fmt(i.line_total)}`;
+  }).join('\n');
+
+  const body = tr.emailBody(
+    `${client.nome} ${client.cognome}`,
+    lines,
+    fmt(order.subtotal),
+    fmt(order.iva_amount),
+    fmt(order.total),
+    order.iva_inc,
+    order.note
+  );
+
+  const mailto = `mailto:${encodeURIComponent(client.email)}`
+    + `?subject=${encodeURIComponent(tr.emailSubject(client.nome+' '+client.cognome))}`
+    + `&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailto;
+}
+
+function openOrderFor(clientId) {
+  pendingClientId = clientId;
+  switchTab('ordine');
 }
 
 // ── Service Worker ───────────────────────────────────────
@@ -809,7 +979,7 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').ca
 (async()=>{
   try {
     await openDB();
-    const all = await dbGetAll();
+    const all = await dbGetAll('entries');
     setStatus('ok',`DB ✓  (${all.length})`);
     if (all.length) { const last=all.reduce((a,b)=>a.id>b.id?a:b); setLastSave(last.ts.slice(0,16)); }
   } catch(e) { setStatus('err','IndexedDB error'); }
