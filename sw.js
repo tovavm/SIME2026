@@ -1,14 +1,8 @@
-const CACHE = 'melicor-v1';
-const ASSETS = [
-  './',
-  './index.html',
-  './icon.png'
-];
+const CACHE = 'melicor-v2';
+const ASSETS = ['./', './index.html', './icon.png'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ASSETS))
-  );
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
   self.skipWaiting();
 });
 
@@ -22,7 +16,5 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
-  );
+  e.respondWith(caches.match(e.request).then(cached => cached || fetch(e.request)));
 });
